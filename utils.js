@@ -1,12 +1,21 @@
 var emoji = require('./node-emoji')
 var numberToSpanishWords = require('./number-to-words')
 
-exports.addEmojis = function(text) {
-    return emoji.replace(text, (emoji) => `${emoji.key}:`)
+function escapeRegExp(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+}
+  
+function replaceAll(str, find, replace) {
+    return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 }
 
-exports.numbersToSpanish = function(text) {
+exports.parseText = function(text) {
+    text = replaceAll(text, 'x', 'cs')
 
+    // replace emojis with its name in spanish
+    text = emoji.replace(text, (emoji) => `${emoji.key}:`)
+
+    // replace numbers with its name in spanish
     let numbers = text.match(/\d+/g);
     
     if(numbers){    
