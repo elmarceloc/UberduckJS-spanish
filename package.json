@@ -1,0 +1,18 @@
+{
+  "name": "@walqaw/uberduckjs",
+  "version": "1.0.0",
+  "description": "Wrapper for the Uberduck.ai API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Waleed Qawasmi",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "node-emoji": "github:elmarceloc/node-emoji-spanish",
+    "number-to-spanish-words": "^1.1.0",
+    "number-to-words": "^1.2.4",
+    "uberduck-api": "^1.2.2"
+  }
+}
