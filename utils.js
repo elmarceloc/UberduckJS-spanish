@@ -1,4 +1,5 @@
 var emoji = require('./node-emoji')
+var lettersToWords = require('./letters-to-words')
 var numberToSpanishWords = require('./number-to-words')
 
 function escapeRegExp(string) {
@@ -14,6 +15,9 @@ exports.parseText = function(text) {
 
     // replace emojis with its name in spanish
     text = emoji.replace(text, (emoji) => `${emoji.key}:`)
+
+    // replace cap letters with its corresponding pronunciation in spanish
+    text = lettersToWords(text)
 
     // replace numbers with its name in spanish
     let numbers = text.match(/\d+/g);
