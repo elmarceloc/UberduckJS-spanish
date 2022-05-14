@@ -11,7 +11,7 @@ module.exports = function(text) {
     text = emoji.replace(text, (emoji) => `${emoji.key}:`)
 
     // replace cap letters with its corresponding pronunciation in spanish
-    text = utils.lettersToWords(text)
+    //text = utils.lettersToWords(text)
 
     console.log(text)
     // replace numbers with its name in spanish
