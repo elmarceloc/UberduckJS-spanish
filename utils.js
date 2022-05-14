@@ -1,33 +1,19 @@
-var emoji = require('./node-emoji')
-var lettersToWords = require('./letters-to-words')
-var numberToSpanishWords = require('./number-to-words')
-
-function escapeRegExp(string) {
+const escapeRegExp = function (string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
 }
   
-function replaceAll(str, find, replace) {
+const replaceAll = function (str, find, replace) {
     return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 }
 
-exports.parseText = function(text) {
-    text = replaceAll(text, 'x', 'cs')
+exports.sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
-    // replace emojis with its name in spanish
-    text = emoji.replace(text, (emoji) => `${emoji.key}:`)
+exports.lettersToWords = function(text){    
+    // A
 
-    // replace cap letters with its corresponding pronunciation in spanish
-    text = lettersToWords(text)
 
-    // replace numbers with its name in spanish
-    let numbers = text.match(/\d+/g);
-    
-    if(numbers){    
-        numbers.forEach(number=> {
-            text = text.replace(number, numberToSpanishWords(parseInt(number)))            
-        })
-    }
     return text
+
 }
 
-exports.sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+exports.replaceAll = replaceAll
